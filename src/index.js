@@ -218,23 +218,23 @@ class ImageCarousel extends Component {
   // eslint-disable-next-line flowtype/no-weak-types
   handlePanEnd = (evt: Object, gestureState: {dx: number, dy: number}) => {
     // eslint-disable-next-line no-magic-numbers
-    if (Math.abs(gestureState.dy) > 150) {
-      this.setState({
-        panning: false,
-        target: {
-          x: gestureState.dx,
-          y: gestureState.dy,
-          opacity: 1 - Math.abs(gestureState.dy / screenHeight),
-        },
-      });
-
-      this.close();
-    } else {
+    // if (Math.abs(gestureState.dy) > 150) {
+    //   this.setState({
+    //     panning: false,
+    //     target: {
+    //       x: gestureState.dx,
+    //       y: gestureState.dy,
+    //       opacity: 1 - Math.abs(gestureState.dy / screenHeight),
+    //     },
+    //   });
+    // 
+    //   this.close();
+    // } else {
       Animated.timing(this.pan, {
         toValue: 0,
         ...ANIM_CONFIG,
       }).start(() => this.setState({panning: false}));
-    }
+    // }
   };
 
   getSwipeableStyle = (idx: number): ReactNative$StyleType => {
